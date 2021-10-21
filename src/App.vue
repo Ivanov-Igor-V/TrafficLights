@@ -6,9 +6,7 @@
     <router-link to="/green">Green</router-link>
     
   </div>
-   <!-- <keep-alive> -->
   <router-view v-bind:directionGr="directionGr" />
-   <!-- </keep-alive> -->
 </template>
 
 <script>
@@ -25,6 +23,8 @@ export default {
 
 
 <style>
+
+
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -60,13 +60,13 @@ export default {
   display: flex;
 }
 .frame {
-    justify-content: center; 
-    margin: 0 auto;
-    display: flex;
-    width: 70%;
-    max-height: 100%;
-    padding-top: 30px;
-    align-content: center;
+  justify-content: center; 
+  margin: 0 auto;
+  display: flex;
+  width: 70%;
+  max-height: 100%;
+  padding-top: 30px;
+  align-content: center;
 }
 
 .frame__body {
@@ -74,7 +74,6 @@ export default {
   flex-direction: column;
   background: black;
   border: 1px solid purple;
-  /* width: 30%; */
   width: 200px;
   display: flex;
   align-items: center;
@@ -92,12 +91,12 @@ export default {
 
 .panel {
  
-    background: white;
-    font-size: 30px;
-    width: 250px;
-    height: min-content;
-    border-radius: 15px;
-    margin: 0 20px ;
+  background: white;
+  font-size: 30px;
+  width: 250px;
+  height: min-content;
+  border-radius: 15px;
+  margin: 0 20px ;
     
 }
 

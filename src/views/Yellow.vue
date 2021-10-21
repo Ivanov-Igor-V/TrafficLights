@@ -2,25 +2,17 @@
 
   <div class="yellow">
    <div class="root">
-    
     <div class="frame">
-      <!-- <button class="btn" @click="this.active"> Запуск! </button> -->
-      <!-- <button class="btn" @click="$router.push('/yellow')"> Стоп! </button> --> 
       <div class="frame__body">
         <div class="circle" > <div class="circleColorRed" v-bind:class="{ unActive: true}"> </div> </div>
         <div class="circle" > <div class="circleColorYellow" v-bind:class="{ unActive: this.on}"> </div> </div>
         <div class="circle" > <div class="circleColorGreen" v-bind:class="{ unActive: true}"> </div> </div>
       </div>
-     
       <router-view />
      <div class='panel'> <span class="clock"> Timer:  {{ this.count }} </span> </div>
-     
   </div>
   </div>
-  
   </div>
-  
- 
 </template>
 
 <script>
@@ -31,18 +23,17 @@ export default {
   props: ['directionGr'], 
   data() {
     return {
-      changeStatus: true,
+      address: '',
       count: 3,
-      //  address: '/green',
-       IntId2: ''
+      IntId2: ''
       }
     }, 
    methods: {
        
         timer() {
            this.IntId2 = setInterval(this.countDecrease, 1000)
-          },
-          countDecrease() {
+        },
+        countDecrease() {
               if (this.count > 0) {
                 this.count--}
               else {
@@ -52,10 +43,9 @@ export default {
               }
           }
         },
-        mounted() {
+    mounted() {
               // clearTimeout(this.empty)
               this.timer()
-             
     },
     beforeUnmount() {
       this.directionGr.value = !this.directionGr.value

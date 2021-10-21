@@ -1,34 +1,24 @@
 <template>
   <div class="red">
  <div class="root">
-    
     <div class="frame">
-     
       <div class="frame__body">
-      
         <div class="circle" > <div class="circleColorRed" v-bind:class="{ unActive: this.on}"> </div> </div>
         <div class="circle" > <div class="circleColorYellow" v-bind:class="{ unActive: true}"> </div> </div>
         <div class="circle" > <div class="circleColorGreen" v-bind:class="{ unActive: true}"> </div> </div>
-        <!-- <img  src="./assets/yellow-light.jpg" alt="нету" v-bind:class="{ unActive: true}"> 
-        <img  src="./assets/green-light.jpg" alt="нету" v-bind:class="{ unActive: true}" >  -->
       </div>
        <div class='panel'> <span class="clock"> Timer:  {{ this.count }} </span> </div>
     </div>
   </div>
-
   </div>
 </template>
 
 <script>
-// import RedLight from '@/components/RedLight.vue'
-
 
 export default {
   name: 'Red',
-
  data() {
     return {
-      on: false,
       address: '/yellow',
       count: 10,
       IntId: ''
@@ -38,11 +28,11 @@ export default {
     
         nextRoute() {
           this.$router.push(this.address)
-            },
-          timer() {
+        },
+        timer() {
              this.IntId = setInterval(this.countDecrease, 1000)
-          },
-          countDecrease() {
+        },
+        countDecrease() {
               if (this.count > 0) {
                 this.count--
                 if (this.count <= 3) {
@@ -51,10 +41,10 @@ export default {
                 }
                 
               else this.$router.push(this.address)
-            }
+        }
     },
     mounted() {
-          this.timer()
+        this.timer()
         },
         beforeUnmount() {
           clearInterval(this.IntId)
