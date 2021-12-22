@@ -1,43 +1,53 @@
 <template>
-  <div id="nav">
-    
-    <router-link to="/red">Red</router-link> |
-    <router-link to="/yellow">Yellow</router-link>  |
-    <router-link to="/green">Green</router-link>
-    
+  <div id="app">
+    <div id="nav">
+      <router-link to="/red">Red</router-link> |
+      <router-link to="/yellow">Yellow</router-link> |
+      <router-link to="/green">Green</router-link>
+    </div>
+    <router-view :directionGr="directionGr" />
   </div>
-  <router-view v-bind:directionGr="directionGr" />
 </template>
 
 <script>
 export default {
   data() {
-    return  {
-     directionGr: {
-       value: true}
-  }
-  }
-}
-  
+    return {
+      directionGr: {
+        value: true,
+      },
+    };
+  },
+};
 </script>
 
 
 <style>
-
-
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
+  margin: 0 auto;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  background: #004242;
+}
+
+.green {
+  margin: 0 auto;
 }
 
 #nav {
   background: #004242;
   padding: 30px;
-  color: white
+  color: white;
 }
 
 #nav a {
@@ -54,13 +64,14 @@ export default {
   position: relative;
   top: 0;
   left: 0;
+  bottom: 0;
   height: 100%;
   width: 100%;
   padding-bottom: 20px;
   display: flex;
 }
 .frame {
-  justify-content: center; 
+  justify-content: center;
   margin: 0 auto;
   display: flex;
   width: 70%;
@@ -77,7 +88,6 @@ export default {
   width: 200px;
   display: flex;
   align-items: center;
-
 }
 
 .circle {
@@ -85,23 +95,20 @@ export default {
   height: 160px;
   margin: 20px;
   border-radius: 50%;
-  border: solid
-  }
-
+  border: solid;
+}
 
 .panel {
- 
   background: white;
   font-size: 30px;
   width: 250px;
   height: min-content;
   border-radius: 15px;
-  margin: 0 20px ;
-    
+  margin: 0 20px;
 }
 
 .clock {
-  margin: 20px ;
+  margin: 20px;
 }
 
 .circleColorRed {
