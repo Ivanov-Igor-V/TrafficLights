@@ -1,22 +1,50 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/red">Red</router-link> |
-      <router-link to="/yellow">Yellow</router-link> |
+      <router-link to="/red">Red</router-link>
+      | <router-link to="/yellow">Yellow</router-link> |
       <router-link to="/green">Green</router-link>
     </div>
-    <router-view :directionGr="directionGr" />
+    <router-view />
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
-    return {
-      directionGr: {
-        value: true,
-      },
-    };
+    return {};
+  },
+  methods: {
+    timer() {
+      this.IntId3 = setInterval(this.countDecrease, 1000);
+    },
+    countDecrease() {
+      if (this.count > 1) {
+        this.$store.commit("DECREMENT_COUNT");
+      } else {
+        this.$router.push(this.$store.getters.COLOR_CALC);
+      }
+    },
+    curRoute(route) {
+      console.log(route);
+      this.$store.commit("CURRENT_ROUTE_TO_CUR_COLOR", route);
+    },
+  },
+  computed: {
+    ...mapState(["curColor", "nextColor", "count"]),
+  },
+  watch: {
+    $route(newVal, oldVal) {
+      this.$store.commit("DECREMENT_START_VALUE", {
+        old: oldVal.name,
+        new: newVal.name,
+      });
+    },
+  },
+  mounted() {
+    this.timer();
+    this.$router.push("red");
   },
 };
 </script>
@@ -28,7 +56,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #e2e9f0;
   height: 100%;
   margin: 0 auto;
 }
@@ -59,45 +87,6 @@ html {
   color: #42b983;
 }
 
-.root {
-  background: #004242;
-  position: relative;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  padding-bottom: 20px;
-  display: flex;
-}
-.frame {
-  justify-content: center;
-  margin: 0 auto;
-  display: flex;
-  width: 70%;
-  max-height: 100%;
-  padding-top: 30px;
-  align-content: center;
-}
-
-.frame__body {
-  border-radius: 50px;
-  flex-direction: column;
-  background: black;
-  border: 1px solid purple;
-  width: 200px;
-  display: flex;
-  align-items: center;
-}
-
-.circle {
-  width: 160px;
-  height: 160px;
-  margin: 20px;
-  border-radius: 50%;
-  border: solid;
-}
-
 .panel {
   background: white;
   font-size: 30px;
@@ -109,6 +98,7 @@ html {
 
 .clock {
   margin: 20px;
+  color: #004242;
 }
 
 .circleColorRed {

@@ -10,18 +10,22 @@ const routes = [
   },
   {
     path: '/red',
-    name: 'Red',
-    component: Red
+    name: 'red',
+    
+    component: Red,
+    props: true
   },
   {
     path: '/green',
-    name: 'Green',
-    component: Green
+    name: 'green',
+    component: Green,
+    props: true
   },
   {
     path: '/yellow',
     name: 'yellow',
-    component: Yellow
+    component: Yellow,
+    props: true
   },
   
 ]
